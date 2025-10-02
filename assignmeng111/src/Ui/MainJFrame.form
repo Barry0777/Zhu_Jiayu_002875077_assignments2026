@@ -147,11 +147,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="View Local Address"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVLAActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnCBA">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Create Bank Account"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCBAActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnVBA">
               <Properties>
@@ -163,7 +169,7 @@
         <Container class="javax.swing.JPanel" name="workArea">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="cc" green="ff" red="ff" type="rgb"/>
+              <Color blue="99" green="99" red="ff" type="rgb"/>
             </Property>
           </Properties>
           <Constraints>

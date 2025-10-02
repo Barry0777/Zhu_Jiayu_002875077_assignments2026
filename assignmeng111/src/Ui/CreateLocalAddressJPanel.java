@@ -17,9 +17,9 @@ public class CreateLocalAddressJPanel extends javax.swing.JPanel {
      * Creates new form CreateLocalAddressPanel
      */
     LocalAddress localAddress;
-    public CreateLocalAddressJPanel(LocalAddress localAddress) {
+    public CreateLocalAddressJPanel(LocalAddress l) {
         initComponents();
-        this.localAddress = new LocalAddress();
+        this.localAddress = l ;
     }
 
     /**

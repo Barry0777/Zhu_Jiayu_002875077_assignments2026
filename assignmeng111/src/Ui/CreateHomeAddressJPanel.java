@@ -18,9 +18,9 @@ public class CreateHomeAddressJPanel extends javax.swing.JPanel {
      * Creates new form CreateHomeAddressPanel
      */
     HomeAddress homeAddress;
-    public CreateHomeAddressJPanel(HomeAddress homeAddress) {
+    public CreateHomeAddressJPanel(HomeAddress h) {
         initComponents();
-        this.homeAddress = new HomeAddress();
+        homeAddress = h;
         
     }
 

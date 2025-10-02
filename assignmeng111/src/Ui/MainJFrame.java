@@ -4,6 +4,7 @@
  */
 package Ui;
 
+import Model.BankAccount;
 import Model.HomeAddress;
 import Model.LocalAddress;
 import Model.Person;
@@ -20,11 +21,13 @@ public class MainJFrame extends javax.swing.JFrame {
     Person person;
     HomeAddress homeAddress ;
     LocalAddress localAddress;
+    BankAccount bankAccount;
     public MainJFrame() {
         initComponents();
         person = new Person();
         homeAddress = new HomeAddress();
         localAddress = new LocalAddress();
+        bankAccount = new BankAccount();
     }
 
     /**
@@ -92,8 +95,18 @@ public class MainJFrame extends javax.swing.JFrame {
         });
 
         btnVLA.setText("View Local Address");
+        btnVLA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVLAActionPerformed(evt);
+            }
+        });
 
         btnCBA.setText("Create Bank Account");
+        btnCBA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCBAActionPerformed(evt);
+            }
+        });
 
         btnVBA.setText("View Bank Account");
 
@@ -144,7 +157,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         splitPane.setLeftComponent(controlPanel);
 
-        workArea.setBackground(new java.awt.Color(255, 255, 204));
+        workArea.setBackground(new java.awt.Color(255, 153, 153));
 
         javax.swing.GroupLayout workAreaLayout = new javax.swing.GroupLayout(workArea);
         workArea.setLayout(workAreaLayout);
@@ -199,6 +212,19 @@ public class MainJFrame extends javax.swing.JFrame {
         splitPane.setRightComponent(createLocalAddressJPanel);
         
     }//GEN-LAST:event_btnCLAActionPerformed
+
+    private void btnVLAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVLAActionPerformed
+        // TODO add your handling code here:
+        ViewLocalAddressJPanel viewLocalAddressJPanel = new ViewLocalAddressJPanel(localAddress);
+        splitPane.setRightComponent(viewLocalAddressJPanel);
+        
+    }//GEN-LAST:event_btnVLAActionPerformed
+
+    private void btnCBAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCBAActionPerformed
+        // TODO add your handling code here:
+        CreateBankJPanel createBankJPanel = new CreateBankJPanel(b);
+        splitPane.setRightComponent(createJPanel);
+    }//GEN-LAST:event_btnCBAActionPerformed
 
     /**
      * @param args the command line arguments
