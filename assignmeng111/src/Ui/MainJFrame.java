@@ -109,6 +109,11 @@ public class MainJFrame extends javax.swing.JFrame {
         });
 
         btnVBA.setText("View Bank Account");
+        btnVBA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVBAActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout controlPanelLayout = new javax.swing.GroupLayout(controlPanel);
         controlPanel.setLayout(controlPanelLayout);
@@ -157,7 +162,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         splitPane.setLeftComponent(controlPanel);
 
-        workArea.setBackground(new java.awt.Color(255, 153, 153));
+        workArea.setBackground(new java.awt.Color(204, 255, 255));
 
         javax.swing.GroupLayout workAreaLayout = new javax.swing.GroupLayout(workArea);
         workArea.setLayout(workAreaLayout);
@@ -222,9 +227,15 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnCBAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCBAActionPerformed
         // TODO add your handling code here:
-        CreateBankJPanel createBankJPanel = new CreateBankJPanel(b);
-        splitPane.setRightComponent(createJPanel);
+        CreateBankJPanel createBankJPanel = new CreateBankJPanel(bankAccount);
+        splitPane.setRightComponent(createBankJPanel);
     }//GEN-LAST:event_btnCBAActionPerformed
+
+    private void btnVBAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVBAActionPerformed
+        // TODO add your handling code here:
+        ViewBankJPanel viewBankJPanel = new ViewBankJPanel(bankAccount);
+        splitPane.setRightComponent(viewBankJPanel);
+    }//GEN-LAST:event_btnVBAActionPerformed
 
     /**
      * @param args the command line arguments

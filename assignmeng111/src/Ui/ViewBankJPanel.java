@@ -4,19 +4,34 @@
  */
 package Ui;
 
+import Model.BankAccount;
+
 /**
  *
  * @author barryzhu
  */
+
+
 public class ViewBankJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ViewBankAccount
      */
-    public ViewBankJPanel() {
+    BankAccount bankAccount;
+    public ViewBankJPanel(BankAccount b) {
         initComponents();
+        bankAccount = b;
+        
+        display();
     }
-
+private void display(){
+    fieldName.setText(bankAccount.getName());
+    fieldAT.setText(bankAccount.getAccountType());
+    fieldAN.setText(bankAccount.getAccountNumber());
+    fieldDA.setText(bankAccount.getDebitAmount());
+    fieldCA.setText(bankAccount.getCreditAmount());
+    
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,19 +41,133 @@ public class ViewBankJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblAN = new javax.swing.JLabel();
+        lblAT = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        fieldCA = new javax.swing.JTextField();
+        fieldDA = new javax.swing.JTextField();
+        fieldAN = new javax.swing.JTextField();
+        fieldAT = new javax.swing.JTextField();
+        fieldName = new javax.swing.JTextField();
+        lblCA = new javax.swing.JLabel();
+        lblDA = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(204, 255, 255));
+        setForeground(new java.awt.Color(255, 204, 204));
+
+        lblAN.setText("Account Number");
+
+        lblAT.setText("Account Type");
+
+        lblName.setText("Name");
+
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel1.setText("View Bank Account");
+
+        fieldCA.setText(" ");
+
+        fieldAN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldANActionPerformed(evt);
+            }
+        });
+
+        fieldName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldNameActionPerformed(evt);
+            }
+        });
+
+        lblCA.setText("Credit Amount");
+
+        lblDA.setText("Debit Amount");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(107, 107, 107)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblAT, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblDA, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCA, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(51, 51, 51)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(fieldDA, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fieldCA, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(86, 86, 86)
+                                .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addComponent(lblAN)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fieldAN, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fieldAT, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fieldName, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblName)
+                            .addComponent(fieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(36, 36, 36)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblAT)
+                            .addComponent(fieldAT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(37, 37, 37)
+                        .addComponent(lblAN))
+                    .addComponent(fieldAN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDA)
+                    .addComponent(fieldDA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblCA)
+                    .addComponent(fieldCA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(251, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void fieldANActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldANActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldANActionPerformed
+
+    private void fieldNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldNameActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField fieldAN;
+    private javax.swing.JTextField fieldAT;
+    private javax.swing.JTextField fieldCA;
+    private javax.swing.JTextField fieldDA;
+    private javax.swing.JTextField fieldName;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblAN;
+    private javax.swing.JLabel lblAT;
+    private javax.swing.JLabel lblCA;
+    private javax.swing.JLabel lblDA;
+    private javax.swing.JLabel lblName;
     // End of variables declaration//GEN-END:variables
+
 }
