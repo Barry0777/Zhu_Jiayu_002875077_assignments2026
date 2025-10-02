@@ -4,6 +4,8 @@
  */
 package Ui;
 
+import Model.Person;
+
 /**
  *
  * @author barryzhu
@@ -11,12 +13,22 @@ package Ui;
 public class ViewPersonJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form ViewPersonPanel
+     * Creates new form ViewPersonJPanel
      */
-    public ViewPersonJPanel() {
+    Person person;
+    public ViewPersonJPanel(Person p) {
         initComponents();
+        person = p;
+        display();
+        
     }
-
+        private void display(){
+            fieldPersonName.setText(person.getName());
+            fieldAge.setText(person.getAge());
+            fieldGender.setText(person.getGender());
+            fieldEmail.setText(person.getEmail());
+            fieldPhone.setText(person.getPhone());
+        }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,19 +38,118 @@ public class ViewPersonJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblPersonName = new javax.swing.JLabel();
+        lblAge = new javax.swing.JLabel();
+        lblGender = new javax.swing.JLabel();
+        lblEmail = new javax.swing.JLabel();
+        lblPhone = new javax.swing.JLabel();
+        fieldPersonName = new javax.swing.JTextField();
+        fieldAge = new javax.swing.JTextField();
+        fieldGender = new javax.swing.JTextField();
+        fieldEmail = new javax.swing.JTextField();
+        fieldPhone = new javax.swing.JTextField();
+        lblTitle = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(255, 204, 204));
+        setForeground(new java.awt.Color(255, 204, 204));
+
+        lblPersonName.setText("Person Name");
+
+        lblAge.setText("Age");
+
+        lblGender.setText("Gender");
+
+        lblEmail.setText("Email");
+
+        lblPhone.setText("Phone");
+
+        fieldAge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldAgeActionPerformed(evt);
+            }
+        });
+
+        lblTitle.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        lblTitle.setText("View Person");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(15, 15, 15)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lblAge)
+                                .addComponent(lblPersonName)
+                                .addComponent(lblGender)
+                                .addComponent(lblEmail)
+                                .addComponent(lblPhone))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(fieldAge, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                                .addComponent(fieldPersonName, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(fieldGender, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(fieldEmail, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(fieldPhone, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(98, 98, 98)
+                            .addComponent(lblTitle)
+                            .addGap(0, 171, Short.MAX_VALUE)))
+                    .addGap(15, 15, 15)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(lblTitle)
+                    .addGap(35, 35, 35)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblPersonName)
+                        .addComponent(fieldPersonName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(46, 46, 46)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblAge)
+                        .addComponent(fieldAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(38, 38, 38)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblGender)
+                        .addComponent(fieldGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(36, 36, 36)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblEmail)
+                        .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(42, 42, 42)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblPhone)
+                        .addComponent(fieldPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void fieldAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldAgeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldAgeActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField fieldAge;
+    private javax.swing.JTextField fieldEmail;
+    private javax.swing.JTextField fieldGender;
+    private javax.swing.JTextField fieldPersonName;
+    private javax.swing.JTextField fieldPhone;
+    private javax.swing.JLabel lblAge;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblGender;
+    private javax.swing.JLabel lblPersonName;
+    private javax.swing.JLabel lblPhone;
+    private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables
+
+    
 }

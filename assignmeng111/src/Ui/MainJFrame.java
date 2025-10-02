@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Ui;
 
@@ -10,10 +10,10 @@ import Model.Person;
  *
  * @author barryzhu
  */
-public class MainJFrame extends javax.swing.JPanel {
+public class MainJFrame extends javax.swing.JFrame {
 
     /**
-     * Creates new form MainJPanel
+     * Creates new form MainJFrame
      */
     Person person;
     public MainJFrame() {
@@ -30,8 +30,8 @@ public class MainJFrame extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSplitPane1 = new javax.swing.JSplitPane();
-        controlArea = new javax.swing.JPanel();
+        splitPane = new javax.swing.JSplitPane();
+        controlPanel = new javax.swing.JPanel();
         lblTitle = new javax.swing.JLabel();
         btnCP = new javax.swing.JButton();
         btnVP = new javax.swing.JButton();
@@ -43,9 +43,9 @@ public class MainJFrame extends javax.swing.JPanel {
         btnVBA = new javax.swing.JButton();
         workArea = new javax.swing.JPanel();
 
-        setLayout(new java.awt.BorderLayout());
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        controlArea.setBackground(new java.awt.Color(255, 204, 204));
+        controlPanel.setBackground(new java.awt.Color(255, 204, 204));
 
         lblTitle.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         lblTitle.setText("Person Profile");
@@ -58,6 +58,11 @@ public class MainJFrame extends javax.swing.JPanel {
         });
 
         btnVP.setText("View Person");
+        btnVP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVPActionPerformed(evt);
+            }
+        });
 
         btnCHA.setText("Create Home Address");
 
@@ -70,55 +75,53 @@ public class MainJFrame extends javax.swing.JPanel {
         btnCBA.setText("Create Bank Account");
 
         btnVBA.setText("View Bank Account");
-        btnVBA.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVBAActionPerformed(evt);
-            }
-        });
 
-        javax.swing.GroupLayout controlAreaLayout = new javax.swing.GroupLayout(controlArea);
-        controlArea.setLayout(controlAreaLayout);
-        controlAreaLayout.setHorizontalGroup(
-            controlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(controlAreaLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(controlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnCBA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblTitle)
-                    .addComponent(btnVBA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnVLA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCLA, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+        javax.swing.GroupLayout controlPanelLayout = new javax.swing.GroupLayout(controlPanel);
+        controlPanel.setLayout(controlPanelLayout);
+        controlPanelLayout.setHorizontalGroup(
+            controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(controlPanelLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCHA, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
                     .addComponent(btnVHA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCHA, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(btnVP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                    .addComponent(btnCP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCLA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnVLA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCBA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnVBA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(controlPanelLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(lblTitle)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
-        controlAreaLayout.setVerticalGroup(
-            controlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(controlAreaLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+        controlPanelLayout.setVerticalGroup(
+            controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(controlPanelLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
                 .addComponent(lblTitle)
-                .addGap(30, 30, 30)
-                .addComponent(btnCP, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(btnCP)
                 .addGap(18, 18, 18)
                 .addComponent(btnVP)
-                .addGap(51, 51, 51)
+                .addGap(60, 60, 60)
                 .addComponent(btnCHA)
                 .addGap(18, 18, 18)
                 .addComponent(btnVHA)
-                .addGap(50, 50, 50)
+                .addGap(61, 61, 61)
                 .addComponent(btnCLA)
                 .addGap(18, 18, 18)
                 .addComponent(btnVLA)
-                .addGap(55, 55, 55)
+                .addGap(54, 54, 54)
                 .addComponent(btnCBA)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnVBA)
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
-        jSplitPane1.setLeftComponent(controlArea);
+        splitPane.setLeftComponent(controlPanel);
 
         workArea.setBackground(new java.awt.Color(255, 255, 204));
 
@@ -126,31 +129,70 @@ public class MainJFrame extends javax.swing.JPanel {
         workArea.setLayout(workAreaLayout);
         workAreaLayout.setHorizontalGroup(
             workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 516, Short.MAX_VALUE)
+            .addGap(0, 595, Short.MAX_VALUE)
         );
         workAreaLayout.setVerticalGroup(
             workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGap(0, 606, Short.MAX_VALUE)
         );
 
-        jSplitPane1.setRightComponent(workArea);
+        splitPane.setRightComponent(workArea);
 
-        add(jSplitPane1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(splitPane, java.awt.BorderLayout.CENTER);
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnVBAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVBAActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnVBAActionPerformed
 
     private void btnCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCPActionPerformed
         // TODO add your handling code here:
-        CreatePersonJPanel createPersonPanel = new CreatePersonJPanel(person);
-        
-        
-        
-        
+        CreatePersonJPanel createPersonJPanel = new CreatePersonJPanel(person);
+        splitPane.setRightComponent(createPersonJPanel);
     }//GEN-LAST:event_btnCPActionPerformed
 
+    private void btnVPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVPActionPerformed
+        // TODO add your handling code here:
+        ViewPersonJPanel viewPersonJPanel = new ViewPersonJPanel(person);
+        splitPane.setRightComponent(viewPersonJPanel);
+        
+        
+        
+        
+    }//GEN-LAST:event_btnVPActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new MainJFrame().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCBA;
@@ -161,9 +203,9 @@ public class MainJFrame extends javax.swing.JPanel {
     private javax.swing.JButton btnVHA;
     private javax.swing.JButton btnVLA;
     private javax.swing.JButton btnVP;
-    private javax.swing.JPanel controlArea;
-    private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JPanel controlPanel;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JSplitPane splitPane;
     private javax.swing.JPanel workArea;
     // End of variables declaration//GEN-END:variables
 }

@@ -23,36 +23,39 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
-                          <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="lblAge" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblPersonName" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblGender" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblEmail" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblPhone" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="lblAge" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblPersonName" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblGender" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblEmail" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblPhone" alignment="1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="fieldPersonName" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="fieldAge" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="fieldGender" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="fieldEmail" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="fieldPhone" alignment="1" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="fieldAge" alignment="1" pref="168" max="32767" attributes="0"/>
+                          <Component id="fieldPersonName" alignment="1" max="32767" attributes="0"/>
+                          <Component id="fieldGender" alignment="1" max="32767" attributes="0"/>
+                          <Component id="fieldEmail" alignment="1" max="32767" attributes="0"/>
+                          <Component id="fieldPhone" alignment="1" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
-                      <Component id="btnSave" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
+                              <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
+                              <Component id="btnSave" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="0" pref="155" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="143" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -130,6 +133,9 @@
     <Component class="javax.swing.JTextField" name="fieldPersonName">
     </Component>
     <Component class="javax.swing.JTextField" name="fieldAge">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fieldAgeActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="fieldGender">
     </Component>
@@ -141,6 +147,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Save"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

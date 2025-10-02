@@ -4,6 +4,9 @@
  */
 package Ui;
 
+import Model.Person;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author barryzhu
@@ -13,8 +16,10 @@ public class CreatePersonJPanel extends javax.swing.JPanel {
     /**
      * Creates new form CreatePersonPanel
      */
-    public CreatePersonJPanel() {
+    Person person;
+    public CreatePersonJPanel(Person p) {
         initComponents();
+        person = p ;
     }
 
     /**
@@ -54,7 +59,18 @@ public class CreatePersonJPanel extends javax.swing.JPanel {
 
         lblPhone.setText("Phone");
 
+        fieldAge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldAgeActionPerformed(evt);
+            }
+        });
+
         btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -62,29 +78,31 @@ public class CreatePersonJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(140, 140, 140)
-                            .addComponent(lblTitle))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(42, 42, 42)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lblAge)
-                                .addComponent(lblPersonName)
-                                .addComponent(lblGender)
-                                .addComponent(lblEmail)
-                                .addComponent(lblPhone))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(fieldPersonName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(fieldAge, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(fieldGender, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(fieldEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(fieldPhone, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addComponent(btnSave)))
-                .addContainerGap(143, Short.MAX_VALUE))
+                        .addGap(42, 42, 42)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblAge)
+                            .addComponent(lblPersonName)
+                            .addComponent(lblGender)
+                            .addComponent(lblEmail)
+                            .addComponent(lblPhone))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(fieldAge, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                            .addComponent(fieldPersonName, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(fieldGender, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(fieldEmail, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(fieldPhone, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(140, 140, 140)
+                                .addComponent(lblTitle))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(119, 119, 119)
+                                .addComponent(btnSave)))
+                        .addGap(0, 155, Short.MAX_VALUE)))
+                .addGap(58, 58, 58))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,6 +134,33 @@ public class CreatePersonJPanel extends javax.swing.JPanel {
                 .addContainerGap(172, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+        String personName = fieldPersonName.getText();
+    String age = fieldAge.getText();
+    String gender = fieldGender.getText();
+    String email = fieldEmail.getText();
+    String phone = fieldPhone.getText();
+
+    person.setName(age);
+    person.setAge(age);
+    person.setGender(age);
+    person.setEmail(age);
+    person.setPhone(age);
+    
+    JOptionPane.showMessageDialog(this, "Successfully Saved");
+    
+    fieldPersonName.setText("");
+    fieldAge.setText("");
+    fieldGender.setText("");
+    fieldEmail.setText("");
+    fieldPhone.setText(age);
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void fieldAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldAgeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldAgeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
