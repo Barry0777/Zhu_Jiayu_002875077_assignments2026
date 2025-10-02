@@ -123,16 +123,25 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Create Home Address"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCHAActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnVHA">
               <Properties>
                 <Property name="text" type="java.lang.String" value="View Home Address"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVHAActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnCLA">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Create Local Address"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCLAActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnVLA">
               <Properties>

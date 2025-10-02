@@ -4,6 +4,8 @@
  */
 package Ui;
 
+import Model.HomeAddress;
+
 /**
  *
  * @author barryzhu
@@ -13,10 +15,21 @@ public class ViewHomeAddressJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ViewHomeAddressPanel
      */
-    public ViewHomeAddressJPanel() {
+    HomeAddress homeAddress;
+    public ViewHomeAddressJPanel(HomeAddress homeAddress) {
         initComponents();
+        this.homeAddress = new HomeAddress();
+        display();
+      
     }
-
+private void display() {
+    if (homeAddress == null) return;     
+    fieldName.setText(homeAddress.getName());
+    fieldStreet.setText(homeAddress.getStreet());
+    fieldCity.setText(homeAddress.getStreet());
+    fieldState.setText(homeAddress.getState());
+    fieldZip.setText(homeAddress.getZip());
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,19 +39,107 @@ public class ViewHomeAddressJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        fieldCity = new javax.swing.JTextField();
+        fieldState = new javax.swing.JTextField();
+        fieldZip = new javax.swing.JTextField();
+        lblTitle = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
+        lblStreet = new javax.swing.JLabel();
+        lblCity = new javax.swing.JLabel();
+        lblState = new javax.swing.JLabel();
+        lblZip = new javax.swing.JLabel();
+        fieldName = new javax.swing.JTextField();
+        fieldStreet = new javax.swing.JTextField();
+
+        setBackground(new java.awt.Color(255, 204, 204));
+
+        lblTitle.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        lblTitle.setText("View Home Address");
+
+        lblName.setText("Name");
+
+        lblStreet.setText("Street");
+
+        lblCity.setText("City");
+
+        lblState.setText("State");
+
+        lblZip.setText("Zip ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(65, 65, 65)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lblStreet)
+                                .addComponent(lblName)
+                                .addComponent(lblCity)
+                                .addComponent(lblState)
+                                .addComponent(lblZip))
+                            .addGap(67, 67, 67)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(fieldState, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(fieldStreet, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(fieldCity)
+                                .addComponent(fieldName)
+                                .addComponent(fieldZip)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(54, 54, 54)
+                            .addComponent(lblTitle)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(66, 66, 66)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(lblTitle)
+                    .addGap(51, 51, 51)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblName)
+                        .addComponent(fieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(36, 36, 36)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblStreet)
+                        .addComponent(fieldStreet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(30, 30, 30)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblCity)
+                        .addComponent(fieldCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(32, 32, 32)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblState)
+                        .addComponent(fieldState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(31, 31, 31)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblZip)
+                        .addComponent(fieldZip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField fieldCity;
+    private javax.swing.JTextField fieldName;
+    private javax.swing.JTextField fieldState;
+    private javax.swing.JTextField fieldStreet;
+    private javax.swing.JTextField fieldZip;
+    private javax.swing.JLabel lblCity;
+    private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblState;
+    private javax.swing.JLabel lblStreet;
+    private javax.swing.JLabel lblTitle;
+    private javax.swing.JLabel lblZip;
     // End of variables declaration//GEN-END:variables
+
+   
 }

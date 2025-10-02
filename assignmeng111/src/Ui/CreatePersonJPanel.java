@@ -155,7 +155,7 @@ public class CreatePersonJPanel extends javax.swing.JPanel {
     fieldAge.setText("");
     fieldGender.setText("");
     fieldEmail.setText("");
-    fieldPhone.setText(age);
+    fieldPhone.setText("");
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void fieldAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldAgeActionPerformed

@@ -4,24 +4,22 @@
  */
 package Ui;
 
-import Model.HomeAddress;
+import Model.LocalAddress;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author barryzhu
  */
-
-public class CreateHomeAddressJPanel extends javax.swing.JPanel {
+public class CreateLocalAddressJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form CreateHomeAddressPanel
+     * Creates new form CreateLocalAddressPanel
      */
-    HomeAddress homeAddress;
-    public CreateHomeAddressJPanel(HomeAddress homeAddress) {
+    LocalAddress localAddress;
+    public CreateLocalAddressJPanel(LocalAddress localAddress) {
         initComponents();
-        this.homeAddress = new HomeAddress();
-        
+        this.localAddress = new LocalAddress();
     }
 
     /**
@@ -38,18 +36,18 @@ public class CreateHomeAddressJPanel extends javax.swing.JPanel {
         lblStreet = new javax.swing.JLabel();
         lblCity = new javax.swing.JLabel();
         lblState = new javax.swing.JLabel();
-        lblZip = new javax.swing.JLabel();
         fieldName = new javax.swing.JTextField();
         fieldStreet = new javax.swing.JTextField();
         fieldCity = new javax.swing.JTextField();
         fieldState = new javax.swing.JTextField();
+        lblZip = new javax.swing.JLabel();
         fieldZip = new javax.swing.JTextField();
         btnSave = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 153, 153));
+        setBackground(new java.awt.Color(255, 204, 204));
 
         lblTitle.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        lblTitle.setText("Create Home Address");
+        lblTitle.setText("Create Local Address");
 
         lblName.setText("Name");
 
@@ -59,7 +57,7 @@ public class CreateHomeAddressJPanel extends javax.swing.JPanel {
 
         lblState.setText("State");
 
-        lblZip.setText("Zip ");
+        lblZip.setText("Zip");
 
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -73,59 +71,58 @@ public class CreateHomeAddressJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblStreet)
-                    .addComponent(lblName)
-                    .addComponent(lblCity)
-                    .addComponent(lblState)
-                    .addComponent(lblZip))
-                .addGap(67, 67, 67)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fieldState, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
-                    .addComponent(fieldStreet, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(fieldCity)
-                    .addComponent(fieldName)
-                    .addComponent(fieldZip))
-                .addGap(113, 113, 113))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(118, 118, 118)
+                        .addGap(105, 105, 105)
                         .addComponent(lblTitle))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(131, 131, 131)
+                        .addGap(62, 62, 62)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblStreet)
+                            .addComponent(lblName)
+                            .addComponent(lblCity)
+                            .addComponent(lblState)
+                            .addComponent(lblZip))
+                        .addGap(82, 82, 82)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(fieldName, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+                            .addComponent(fieldStreet)
+                            .addComponent(fieldCity)
+                            .addComponent(fieldState)
+                            .addComponent(fieldZip)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(121, 121, 121)
                         .addComponent(btnSave)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(38, 38, 38)
                 .addComponent(lblTitle)
-                .addGap(51, 51, 51)
+                .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblName)
                     .addComponent(fieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblStreet)
                     .addComponent(fieldStreet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCity)
                     .addComponent(fieldCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblState)
                     .addComponent(fieldState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblZip)
                     .addComponent(fieldZip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
+                .addGap(56, 56, 56)
                 .addComponent(btnSave)
-                .addContainerGap(194, Short.MAX_VALUE))
+                .addContainerGap(175, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -137,21 +134,20 @@ public class CreateHomeAddressJPanel extends javax.swing.JPanel {
         String state = fieldState.getText();
         String zip = fieldZip.getText();
         
-        homeAddress.setName(name);
-        homeAddress.setStreet(street);
-        homeAddress.setCity(city);
-        homeAddress.setState(state);
-        homeAddress.setZip(zip);
-        
-        JOptionPane.showMessageDialog(this, "Successfully Saved");
-        
-         fieldName.setText("");
+        localAddress.setName(name);
+       localAddress.setStreet(street);
+        localAddress.setCity(city);
+       localAddress.setState(state);
+       localAddress.setZip(zip);
+       
+       JOptionPane.showMessageDialog(this, "Successfully Saved");
+       
+       fieldName.setText("");
          fieldStreet.setText("");
          fieldCity.setText("");
         fieldState.setText("");
         fieldZip.setText("");
         
-                
     }//GEN-LAST:event_btnSaveActionPerformed
 
 

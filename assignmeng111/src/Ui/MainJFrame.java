@@ -4,6 +4,8 @@
  */
 package Ui;
 
+import Model.HomeAddress;
+import Model.LocalAddress;
 import Model.Person;
 
 /**
@@ -16,9 +18,13 @@ public class MainJFrame extends javax.swing.JFrame {
      * Creates new form MainJFrame
      */
     Person person;
+    HomeAddress homeAddress ;
+    LocalAddress localAddress;
     public MainJFrame() {
         initComponents();
         person = new Person();
+        homeAddress = new HomeAddress();
+        localAddress = new LocalAddress();
     }
 
     /**
@@ -65,10 +71,25 @@ public class MainJFrame extends javax.swing.JFrame {
         });
 
         btnCHA.setText("Create Home Address");
+        btnCHA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCHAActionPerformed(evt);
+            }
+        });
 
         btnVHA.setText("View Home Address");
+        btnVHA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVHAActionPerformed(evt);
+            }
+        });
 
         btnCLA.setText("Create Local Address");
+        btnCLA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCLAActionPerformed(evt);
+            }
+        });
 
         btnVLA.setText("View Local Address");
 
@@ -158,6 +179,26 @@ public class MainJFrame extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btnVPActionPerformed
+
+    private void btnCHAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCHAActionPerformed
+        // TODO add your handling code here:
+        CreateHomeAddressJPanel createHomeAddressJPanel = new CreateHomeAddressJPanel(homeAddress);
+        splitPane.setRightComponent(createHomeAddressJPanel);
+        
+    }//GEN-LAST:event_btnCHAActionPerformed
+
+    private void btnVHAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVHAActionPerformed
+        // TODO add your handling code here:
+       ViewHomeAddressJPanel viewHomeAddressJPanel = new ViewHomeAddressJPanel(homeAddress);
+        splitPane.setRightComponent(viewHomeAddressJPanel);
+    }//GEN-LAST:event_btnVHAActionPerformed
+
+    private void btnCLAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCLAActionPerformed
+        // TODO add your handling code here:
+        CreateLocalAddressJPanel createLocalAddressJPanel = new CreateLocalAddressJPanel(localAddress);
+        splitPane.setRightComponent(createLocalAddressJPanel);
+        
+    }//GEN-LAST:event_btnCLAActionPerformed
 
     /**
      * @param args the command line arguments
