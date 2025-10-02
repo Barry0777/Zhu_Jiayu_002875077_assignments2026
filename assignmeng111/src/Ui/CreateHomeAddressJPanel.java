@@ -8,12 +8,12 @@ package Ui;
  *
  * @author barryzhu
  */
-public class CreatePersonPanel extends javax.swing.JPanel {
+public class CreateHomeAddressJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form CreatePersonPanel
+     * Creates new form CreateHomeAddressPanel
      */
-    public CreatePersonPanel() {
+    public CreateHomeAddressJPanel() {
         initComponents();
     }
 

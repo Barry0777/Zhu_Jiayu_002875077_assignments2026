@@ -8,12 +8,12 @@ package Ui;
  *
  * @author barryzhu
  */
-public class ViewBankPanel extends javax.swing.JPanel {
+public class CreateLocalJAddressPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form ViewBankPanel
+     * Creates new form CreateLocalAddressPanel
      */
-    public ViewBankPanel() {
+    public CreateLocalJAddressPanel() {
         initComponents();
     }
 

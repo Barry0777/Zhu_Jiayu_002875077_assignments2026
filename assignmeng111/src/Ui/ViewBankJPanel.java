@@ -8,12 +8,12 @@ package Ui;
  *
  * @author barryzhu
  */
-public class ViewLocalAddressPanel extends javax.swing.JPanel {
+public class ViewBankJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form ViewLocalAddressPanel
+     * Creates new form ViewBankPanel
      */
-    public ViewLocalAddressPanel() {
+    public ViewBankJPanel() {
         initComponents();
     }
 
@@ -30,11 +30,11 @@ public class ViewLocalAddressPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 620, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 580, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
