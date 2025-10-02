@@ -5,6 +5,7 @@
 package Ui;
 
 import Model.BankAccount;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -73,6 +74,11 @@ public class CreateBankJPanel extends javax.swing.JPanel {
         fieldCA.setText(" ");
 
         lblSave.setText("Save");
+        lblSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lblSaveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -150,6 +156,31 @@ public class CreateBankJPanel extends javax.swing.JPanel {
     private void fieldANActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldANActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldANActionPerformed
+
+    private void lblSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblSaveActionPerformed
+        // TODO add your handling code here:
+        
+        String name = fieldName.getText();
+        String accountType = fieldAT.getText();
+        String accountNumber = fieldAN.getText();
+        String debitAmount = fieldDA.getText();
+        String creditAmount = fieldCA.getText();
+        
+        bankAccount.setName(name);
+        bankAccount.setAccountType(name);
+        bankAccount.setAccountNumber(name);
+        bankAccount.setDebitAmount(name);
+        bankAccount.setCreditAmount(name);
+        
+        JOptionPane.showMessageDialog(this, "Successfully Saved");
+        
+        fieldName.setText("");
+        fieldAT.setText("");
+        fieldAN.setText("");
+        fieldDA.setText("");
+        fieldCA.setText("");
+        
+    }//GEN-LAST:event_lblSaveActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
