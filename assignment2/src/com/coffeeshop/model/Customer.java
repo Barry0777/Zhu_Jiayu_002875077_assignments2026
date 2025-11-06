@@ -15,6 +15,12 @@ public class Customer {
     private String contact;
    
 
+    
+    
+    
+    
+    
+    
     public Customer(String customerId, String firstName, String lastName, String contact) {
         this.customerId = customerId;
         this.firstName = firstName;
