@@ -5,6 +5,9 @@ import com.coffeeshop.model.Product;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
+
+
+
 public class ManageProductsPanel extends javax.swing.JPanel {
     private Business business;
 
@@ -14,6 +17,8 @@ public class ManageProductsPanel extends javax.swing.JPanel {
         populateTable();
     }
 
+    
+    
     
     
     
@@ -216,6 +221,8 @@ public class ManageProductsPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
     
     
     
