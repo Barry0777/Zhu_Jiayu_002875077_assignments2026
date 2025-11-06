@@ -14,6 +14,8 @@ public class AddOrderPanel extends javax.swing.JPanel {
         this.business = business;
         populateProductsComboBox();
     }
+    
+    
 
     private void populateProductsComboBox() {
         cmbProduct.removeAllItems();
