@@ -14,6 +14,11 @@ public class Product {
     private int prepTime; 
 
    
+   
+    
+    
+    
+    
     public Product(String productId, String name, String category, double price, int stockNumber, int prepTime) {
         this.productId = productId;
         this.name = name;
