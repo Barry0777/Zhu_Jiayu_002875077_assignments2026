@@ -14,6 +14,11 @@ public class ManageProductsPanel extends javax.swing.JPanel {
         populateTable();
     }
 
+    
+    
+    
+    
+    
     private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) tblProducts.getModel();
         model.setRowCount(0);
@@ -211,6 +216,11 @@ public class ManageProductsPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
+    
+    
+    
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         if (txtProductId.getText().isBlank() || txtName.getText().isBlank() || txtCategory.getText().isBlank() || txtPrice.getText().isBlank() || txtStock.getText().isBlank() || txtPrepTime.getText().isBlank()) {
             JOptionPane.showMessageDialog(this, "All fields are required.", "Validation Error", JOptionPane.ERROR_MESSAGE);
