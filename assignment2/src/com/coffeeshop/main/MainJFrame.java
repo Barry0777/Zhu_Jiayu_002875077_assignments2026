@@ -15,6 +15,8 @@ public class MainJFrame extends javax.swing.JFrame {
     private Business business;
     private CardLayout cardLayout;
 
+    
+    
     public MainJFrame() {
         initComponents();
         this.business = new Business();
