@@ -22,6 +22,8 @@ public class ListOrdersPanel extends javax.swing.JPanel {
         if (business != null && business.getOrderDirectory() != null) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
             for (Order order : business.getOrderDirectory().getAllOrders()) {
+                
+                
                 Object[] row = new Object[5];
                 row[0] = order.getOrderId();
                 row[1] = order.getCustomer().getFirstName() + " " + order.getCustomer().getLastName();
