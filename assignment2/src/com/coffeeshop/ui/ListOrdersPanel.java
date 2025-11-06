@@ -17,11 +17,18 @@ public class ListOrdersPanel extends javax.swing.JPanel {
 
     public void populateTable() {
         DefaultTableModel model = (DefaultTableModel) tblOrders.getModel();
+        
+        
+        
         model.setRowCount(0);
 
         if (business != null && business.getOrderDirectory() != null) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
             for (Order order : business.getOrderDirectory().getAllOrders()) {
+                
+                
+              
+                
                 
                 
                 Object[] row = new Object[5];
@@ -120,6 +127,9 @@ public class ListOrdersPanel extends javax.swing.JPanel {
 
         String orderId = (String) tblOrders.getValueAt(selectedRow, 0);
 
+     
+        
+        
         Order orderToDelete = null;
         for (Order o : business.getOrderDirectory().getAllOrders()) {
             if (o.getOrderId().equals(orderId)) {
