@@ -31,6 +31,10 @@ public class ListOrdersPanel extends javax.swing.JPanel {
                 
                 
                 
+                
+                
+                
+                
                 Object[] row = new Object[5];
                 row[0] = order.getOrderId();
                 row[1] = order.getCustomer().getFirstName() + " " + order.getCustomer().getLastName();
@@ -113,6 +117,10 @@ public class ListOrdersPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
+    
+    
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         int selectedRow = tblOrders.getSelectedRow();
         if (selectedRow < 0) {
@@ -128,6 +136,9 @@ public class ListOrdersPanel extends javax.swing.JPanel {
         String orderId = (String) tblOrders.getValueAt(selectedRow, 0);
 
      
+        
+        
+        
         
         
         Order orderToDelete = null;

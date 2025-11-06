@@ -316,6 +316,14 @@ public class ManageProductsPanel extends javax.swing.JPanel {
         clearFields();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
+   
+    
+    
+    
+    
+    
+    
+    
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         int selectedRow = tblProducts.getSelectedRow();
         if (selectedRow < 0) {
@@ -358,7 +366,16 @@ public class ManageProductsPanel extends javax.swing.JPanel {
             return;
         }
 
+        
+        
+        
+        
+       
+        
         DefaultTableModel model = (DefaultTableModel) tblProducts.getModel();
+       
+        
+        
         txtProductId.setText(model.getValueAt(selectedRow, 0).toString());
         txtName.setText(model.getValueAt(selectedRow, 1).toString());
         txtCategory.setText(model.getValueAt(selectedRow, 2).toString());
