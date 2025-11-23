@@ -12,71 +12,77 @@ import business.security.SystemAdminRole;
 import business.security.UserAccount;
 
 import java.time.LocalDate;
-
+//@author Zhu jiayu
+/** 统一初始化系统 & 种子数据 */
 public class ConfigureTheBusiness {
+    
+    
 
+    /** 供 UI 调用：LibrarySystem sys = ConfigureTheBusiness.init(); */
     public static LibrarySystem init() {
+        LibrarySystem sys = new LibrarySystem();
 
-        LibrarySystem system = new LibrarySystem();
+        // 1) 账号（用于登录验证）
+        UserAccountDirectory ua = sys.getUserAccountDirectory();
+        ua.create("admin",   "admin123", new SystemAdminRole());
+        ua.create("manager", "mgr123",   new BranchManagerRole());
+        
+        // 5 个客户账号（作业要求）
+        ua.create("alice", "123", new CustomerRole());
+        ua.create("bob",   "123", new CustomerRole());
+        ua.create("carl",  "123", new CustomerRole());
+        ua.create("dina",  "123", new CustomerRole());
+        ua.create("eric",  "123", new CustomerRole());
 
-        UserAccountDirectory accountDir = system.getUserAccountDirectory();
-
-        UserAccount adminAccount   = accountDir.create("admin",   "admin123", new SystemAdminRole());
-        UserAccount managerAccount = accountDir.create("manager", "mgr123",   new BranchManagerRole());
-
-        accountDir.create("ivy",   "123", new CustomerRole());
-        accountDir.create("liam",  "123", new CustomerRole());
-        accountDir.create("nora",  "123", new CustomerRole());
-        accountDir.create("oscar", "123", new CustomerRole());
-        accountDir.create("peter", "123", new CustomerRole());
-
+        // 若你已经有 CustomerDirectory，则同步创建 Customer 对象（否则先注释掉）
         try {
-            var customerDir = system.getCustomerDirectory();
-            customerDir.create("ivy",   "Ivy Sun");
-            customerDir.create("liam",  "Liam Guo");
-            customerDir.create("nora",  "Nora Zhang");
-            customerDir.create("oscar", "Oscar Lin");
-            customerDir.create("peter", "Peter Wang");
-        } catch (Exception ignore) {
+            sys.getCustomerDirectory().create("alice", "Alice");
+            sys.getCustomerDirectory().create("bob",   "Bob");
+            sys.getCustomerDirectory().create("carl",  "Carl");
+            sys.getCustomerDirectory().create("dina",  "Dina");
+            sys.getCustomerDirectory().create("eric",  "Eric");
+        } catch (Throwable ignore) {
+            // 没有 CustomerDirectory 就先略过，不影响运行
         }
 
-        BranchDirectory branchDir   = system.getBranchDirectory();
-        LibraryDirectory libraryDir = system.getLibraryDirectory();
+        // 2) 分馆 & 库 & 经理
+        BranchDirectory bd = sys.getBranchDirectory();
+        LibraryDirectory ld = sys.getLibraryDirectory();
+        
 
-        Branch centralBranch = branchDir.create("Central Branch");
-        Branch northBranch   = branchDir.create("North Branch");
+        Branch b1 = bd.create("Downtown");
+        Branch b2 = bd.create("Uptown");
 
-        Library centralLibrary = libraryDir.create("C-101");
-        Library northLibrary   = libraryDir.create("N-201");
+        Library l1 = ld.create("B1-101");
+        Library l2 = ld.create("B2-201");
+        
+        
+        // 2）ConfigureTheBusiness 里给 manager 指定 library
+        UserAccount mgrAccount = ua.create("manager", "mgr123", new BranchManagerRole());
+        mgrAccount.setLibraryId(l1.getId());   // 例如管 Downtown 对应的库
 
-        managerAccount.setLibraryId(centralLibrary.getId());
+        Employee m1 = new Employee("Alice Manager", 5);
+        Employee m2 = new Employee("Bob Manager", 7);
+        sys.getEmployeeDirectory().add(m1);
+        sys.getEmployeeDirectory().add(m2);
 
-        Employee managerOne = new Employee("Emma Rivera", 5);
-        Employee managerTwo = new Employee("Liam Chen",   7);
+        b1.setLibrary(l1); b1.setManager(m1); l1.setManager(m1);
+        b2.setLibrary(l2); b2.setManager(m2); l2.setManager(m2);
 
-        system.getEmployeeDirectory().add(managerOne);
-        system.getEmployeeDirectory().add(managerTwo);
+        // 3) 作者 & 图书（统一通过 Directory 创建；每本书归属一个 Library）
+        var aRowling = sys.getAuthorDirectory().create("J.K. Rowling");
+        var aMartin  = sys.getAuthorDirectory().create("George R.R. Martin");
+        var aOrwell  = sys.getAuthorDirectory().create("George Orwell");
 
-        centralBranch.setLibrary(centralLibrary);
-        centralBranch.setManager(managerOne);
-        centralLibrary.setManager(managerOne);
+        sys.getBookDirectory().create("Harry Potter and the Sorcerer's Stone",
+                LocalDate.now(), 320, "EN", aRowling, l1);
+        sys.getBookDirectory().create("A Game of Thrones",
+                LocalDate.now(), 690, "EN", aMartin, l2);
+        sys.getBookDirectory().create("1984",
+                LocalDate.now(), 328, "EN", aOrwell, l1);
+        sys.getBookDirectory().create("Animal Farm",
+                LocalDate.now(), 112, "EN", aOrwell, l2);
 
-        northBranch.setLibrary(northLibrary);
-        northBranch.setManager(managerTwo);
-        northLibrary.setManager(managerTwo);
-
-        var authorOne   = system.getAuthorDirectory().create("Lena Hart");
-        var authorTwo   = system.getAuthorDirectory().create("Marco Silva");
-        var authorThree = system.getAuthorDirectory().create("Kenji Aoki");
-
-        var bookDir = system.getBookDirectory();
-        LocalDate today = LocalDate.now();
-
-        bookDir.create("Skyward Journey", today, 320, "EN", authorOne,   centralLibrary);
-        bookDir.create("Winter's Oath",   today, 690, "EN", authorTwo,   northLibrary);
-        bookDir.create("Silent Code",     today, 328, "EN", authorThree, centralLibrary);
-        bookDir.create("Neon Dreams",     today, 112, "EN", authorThree, northLibrary);
-
-        return system;
+        return sys;
     }
 }
