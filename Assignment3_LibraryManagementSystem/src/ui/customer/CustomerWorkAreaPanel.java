@@ -266,7 +266,7 @@ private void initHistoryTab() {
     if (row < 0) { msg("Please select a book."); return; }
 
     business.model.book.Book bk =
-            (business.model.book.Book) tblBrowse.getValueAt(row, 0);
+            (business.model.book.Book) tblBrowse.getValueAt(row, 1);
 
     if (bk.isRented()) { msg("This book has already been borrowed."); return; }
 

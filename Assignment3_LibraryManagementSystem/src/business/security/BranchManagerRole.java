@@ -1,7 +1,6 @@
 package business.security;
 
 import business.LibrarySystem;
-import business.model.Branch;
 import business.model.Library;
 import ui.manager.ManagerWorkAreaPanel;
 
@@ -12,23 +11,21 @@ public class BranchManagerRole extends Role {
     @Override
     public JPanel createWorkArea(LibrarySystem system, String username) {
 
-        Library target = null;
+        // 1) 找到当前登录账户
+        UserAccount ua = system.getUserAccountDirectory().find(username);
 
-        for (Branch br : system.getBranchDirectory().getAll()) {
-            Library ref = br.getLibrary();
-            if (ref != null) {
-                target = ref;
-                break;
-            }
+        Library lib = null;
+
+        if (ua != null && ua.getLibraryId() != null) {
+            // 2) 根据 libraryId 找到属于该 manager 的 library
+            lib = system.getLibraryDirectory().findById(ua.getLibraryId());
         }
 
-        if (target == null) {
-            var libraries = system.getLibraryDirectory().getAll();
-            if (!libraries.isEmpty()) {
-                target = libraries.get(0);
-            }
+        // 3) 如果找不到，兜底给第一个 library（不会崩）
+        if (lib == null && !system.getLibraryDirectory().getAll().isEmpty()) {
+            lib = system.getLibraryDirectory().getAll().get(0);
         }
 
-        return new ManagerWorkAreaPanel(system, target);
+        return new ManagerWorkAreaPanel(system, lib);
     }
 }

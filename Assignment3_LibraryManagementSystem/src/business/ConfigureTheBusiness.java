@@ -37,7 +37,7 @@ public class ConfigureTheBusiness {
         ua.create("sysadmin", "admin123", new SystemAdminRole());
 
         // 1 Manager (for branch A)
-        ua.create("managerA", "mgrA123", new BranchManagerRole());
+        //ua.create("managerA", "mgrA123", new BranchManagerRole());
 
         // 5 Customers (Assignment requirement)
         String[][] customerSeed = {
@@ -134,6 +134,46 @@ public class ConfigureTheBusiness {
                 aSanderson,
                 libWest
         );
+        // === Default Rental Records (so manager can see rentals immediately) ===
+var rentalDir = system.getRentalDirectory();
+var books = system.getBookDirectory().getAll();
+
+if (books.size() >= 4) {
+
+    
+    var r1 = rentalDir.create(
+            books.get(0),      // Shadows of the Dawn
+            "ryan",            // 
+            LocalDate.now().minusDays(3),
+            LocalDate.now().plusDays(11)
+    );
+    r1.setStatus(business.model.Rental.RentalStatus.BORROWED);
+
+
+    var r2 = rentalDir.create(
+            books.get(2),      // Silent River
+            "sophia",
+            LocalDate.now().minusDays(10),
+            LocalDate.now().minusDays(2)
+    );
+    r2.setReturnDate(LocalDate.now().minusDays(2));
+    r2.setStatus(business.model.Rental.RentalStatus.RETURNED);
+
+    
+    rentalDir.create(
+            books.get(1),      // Fragments of Tomorrow
+            "noah",
+            LocalDate.now().minusDays(1),
+            LocalDate.now().plusDays(13)
+    );
+
+    rentalDir.create(
+            books.get(3),      // Winter's Gate
+            "liam",
+            LocalDate.now().minusDays(20),
+            LocalDate.now().minusDays(5)
+    ).setStatus(business.model.Rental.RentalStatus.RETURNED);
+}
 
         return system;
     }
