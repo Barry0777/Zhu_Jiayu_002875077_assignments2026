@@ -12,77 +12,131 @@ import business.security.SystemAdminRole;
 import business.security.UserAccount;
 
 import java.time.LocalDate;
-//@author Zhu jiayu
-/** 统一初始化系统 & 种子数据 */
+
+/**
+ * System bootstrap and seed-data creator.
+ * Initializes branches, libraries, employees, authors, books, and user accounts.
+ */
 public class ConfigureTheBusiness {
-    
-    
 
-    /** 供 UI 调用：LibrarySystem sys = ConfigureTheBusiness.init(); */
+    /**
+     * Main entry point invoked by LoginFrame.
+     * Builds a fully populated LibrarySystem instance.
+     */
     public static LibrarySystem init() {
-        LibrarySystem sys = new LibrarySystem();
 
-        // 1) 账号（用于登录验证）
-        UserAccountDirectory ua = sys.getUserAccountDirectory();
-        ua.create("admin",   "admin123", new SystemAdminRole());
-        ua.create("manager", "mgr123",   new BranchManagerRole());
-        
-        // 5 个客户账号（作业要求）
-        ua.create("alice", "123", new CustomerRole());
-        ua.create("bob",   "123", new CustomerRole());
-        ua.create("carl",  "123", new CustomerRole());
-        ua.create("dina",  "123", new CustomerRole());
-        ua.create("eric",  "123", new CustomerRole());
+        // === Create core system ===
+        LibrarySystem system = new LibrarySystem();
 
-        // 若你已经有 CustomerDirectory，则同步创建 Customer 对象（否则先注释掉）
-        try {
-            sys.getCustomerDirectory().create("alice", "Alice");
-            sys.getCustomerDirectory().create("bob",   "Bob");
-            sys.getCustomerDirectory().create("carl",  "Carl");
-            sys.getCustomerDirectory().create("dina",  "Dina");
-            sys.getCustomerDirectory().create("eric",  "Eric");
-        } catch (Throwable ignore) {
-            // 没有 CustomerDirectory 就先略过，不影响运行
+        // === Preload User Accounts ===
+        UserAccountDirectory ua = system.getUserAccountDirectory();
+
+        // 1 Admin
+        ua.create("sysadmin", "admin123", new SystemAdminRole());
+
+        // 1 Manager (for branch A)
+        ua.create("managerA", "mgrA123", new BranchManagerRole());
+
+        // 5 Customers (Assignment requirement)
+        String[][] customerSeed = {
+                {"ryan",   "123"},
+                {"sophia", "123"},
+                {"liam",   "123"},
+                {"zoe",    "123"},
+                {"noah",   "123"}
+        };
+
+        for (String[] acc : customerSeed) {
+            ua.create(acc[0], acc[1], new CustomerRole());
         }
 
-        // 2) 分馆 & 库 & 经理
-        BranchDirectory bd = sys.getBranchDirectory();
-        LibraryDirectory ld = sys.getLibraryDirectory();
-        
+        // Mirror into CustomerDirectory if available
+        try {
+            for (String[] acc : customerSeed) {
+                system.getCustomerDirectory().create(acc[0], capitalize(acc[0]));
+            }
+        } catch (Exception ignore) {
+            // Ignore if directory is absent
+        }
 
-        Branch b1 = bd.create("Downtown");
-        Branch b2 = bd.create("Uptown");
+        // === Branches + Libraries ===
+        BranchDirectory bd = system.getBranchDirectory();
+        LibraryDirectory ld = system.getLibraryDirectory();
 
-        Library l1 = ld.create("B1-101");
-        Library l2 = ld.create("B2-201");
-        
-        
-        // 2）ConfigureTheBusiness 里给 manager 指定 library
-        UserAccount mgrAccount = ua.create("manager", "mgr123", new BranchManagerRole());
-        mgrAccount.setLibraryId(l1.getId());   // 例如管 Downtown 对应的库
+        Branch brEast  = bd.create("East Side Branch");
+        Branch brWest  = bd.create("West End Branch");
 
-        Employee m1 = new Employee("Alice Manager", 5);
-        Employee m2 = new Employee("Bob Manager", 7);
-        sys.getEmployeeDirectory().add(m1);
-        sys.getEmployeeDirectory().add(m2);
+        Library libEast = ld.create("E-101");
+        Library libWest = ld.create("W-204");
 
-        b1.setLibrary(l1); b1.setManager(m1); l1.setManager(m1);
-        b2.setLibrary(l2); b2.setManager(m2); l2.setManager(m2);
+        // Assign managerA account to Library East
+        UserAccount mgrA = ua.create("managerA", "mgrA123", new BranchManagerRole());
+        mgrA.setLibraryId(libEast.getId());
 
-        // 3) 作者 & 图书（统一通过 Directory 创建；每本书归属一个 Library）
-        var aRowling = sys.getAuthorDirectory().create("J.K. Rowling");
-        var aMartin  = sys.getAuthorDirectory().create("George R.R. Martin");
-        var aOrwell  = sys.getAuthorDirectory().create("George Orwell");
+        // === Employees (Managers) ===
+        Employee empEast = new Employee("Evan Turner", 6);
+        Employee empWest = new Employee("Mara Collins", 8);
 
-        sys.getBookDirectory().create("Harry Potter and the Sorcerer's Stone",
-                LocalDate.now(), 320, "EN", aRowling, l1);
-        sys.getBookDirectory().create("A Game of Thrones",
-                LocalDate.now(), 690, "EN", aMartin, l2);
-        sys.getBookDirectory().create("1984",
-                LocalDate.now(), 328, "EN", aOrwell, l1);
-        sys.getBookDirectory().create("Animal Farm",
-                LocalDate.now(), 112, "EN", aOrwell, l2);
+        system.getEmployeeDirectory().add(empEast);
+        system.getEmployeeDirectory().add(empWest);
 
-        return sys;
+        // Bind Branch ↔ Library ↔ Manager
+        brEast.setLibrary(libEast);
+        brEast.setManager(empEast);
+        libEast.setManager(empEast);
+
+        brWest.setLibrary(libWest);
+        brWest.setManager(empWest);
+        libWest.setManager(empWest);
+
+        // === Authors ===
+        var aHartman   = system.getAuthorDirectory().create("Lydia Hartman");
+        var aKeats     = system.getAuthorDirectory().create("Brandon Keats");
+        var aSanderson = system.getAuthorDirectory().create("Elio Sanderson");
+
+        // === Books ===
+        system.getBookDirectory().create(
+                "Shadows of the Dawn",
+                LocalDate.now(),
+                350,
+                "EN",
+                aHartman,
+                libEast
+        );
+
+        system.getBookDirectory().create(
+                "Fragments of Tomorrow",
+                LocalDate.now(),
+                420,
+                "EN",
+                aKeats,
+                libWest
+        );
+
+        system.getBookDirectory().create(
+                "Silent River",
+                LocalDate.now(),
+                310,
+                "EN",
+                aSanderson,
+                libEast
+        );
+
+        system.getBookDirectory().create(
+                "Winter's Gate",
+                LocalDate.now(),
+                260,
+                "EN",
+                aSanderson,
+                libWest
+        );
+
+        return system;
+    }
+
+    /** Capitalize first character of a string */
+    private static String capitalize(String s) {
+        if (s == null || s.isEmpty()) return s;
+        return Character.toUpperCase(s.charAt(0)) + s.substring(1);
     }
 }
