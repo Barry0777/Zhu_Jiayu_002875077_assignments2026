@@ -47,6 +47,8 @@ public class ConfigureTheBusiness {
                 {"zoe",    "123"},
                 {"noah",   "123"}
         };
+        
+        
 
         for (String[] acc : customerSeed) {
             ua.create(acc[0], acc[1], new CustomerRole());
